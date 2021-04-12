@@ -33,6 +33,10 @@ def convert_file_size(size_str: str) -> int:
 
 
 def fix_file_name(file_name: str) -> str:
+    if not file_name:
+        return ""
+
     if ".txt" not in file_name:
         file_name += ".txt"
+
     return file_name
