@@ -1,9 +1,5 @@
-import os
 from typing import Generator
-from random import choice
-from string import digits
 from models import FileInfo
-from .logic import get_file_name
 
 
 class FileWriter:
