@@ -14,3 +14,19 @@ def make_file_path() -> str:
 
 def get_file_name(path: str) -> str:
     return path[7:]
+
+
+def convert_file_size(size_str: str) -> int:
+    """Allow custom size for file-writer's writing operation"""
+    try:
+        if "K" in size_str:
+            val, unit = size_str.split("K")
+            return int(val) * 1024
+
+        if "M" in size_str:
+            val, unit = size_str.split("M")
+            return int(val) * 1024 * 1024
+
+        return int(size_str)
+    except Exception:
+        return 0
