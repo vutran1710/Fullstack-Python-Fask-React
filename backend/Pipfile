@@ -1,0 +1,21 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+flask = "*"
+pydantic = "*"
+
+[dev-packages]
+jedi = "*"
+black = "*"
+
+[requires]
+python_version = "3.8"
+
+[scripts]
+dev = "python ./main.py"
+
+[pipenv]
+allow_prereleases = true
