@@ -17,11 +17,13 @@ def test_write():
         while True:
             yield dg.random_str() + ", "
 
-    info = f.write(stream_generator=content_generator())
+    stream_content = content_generator()
+
+    info = f.write(stream_content)
     assert isinstance(info, FileInfo)
     assert int(info.size / 1024) == 1  # NOTE: 1kb
 
     f = FileWriter(max_size=100)
-    info = f.write(stream_generator=content_generator())
+    info = f.write(stream_content)
     assert isinstance(info, FileInfo)
     assert int(info.size / 100) == 1  # NOTE: 100 bytes

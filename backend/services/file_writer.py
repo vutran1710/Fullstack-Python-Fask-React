@@ -1,4 +1,5 @@
 import os
+from typing import Generator
 from random import choice
 from string import digits
 from models import FileInfo
@@ -21,7 +22,7 @@ class FileWriter:
 
         self.path = path
 
-    def write(self, path=None, stream_generator=None) -> FileInfo:
+    def write(self, stream_generator: Generator, path=None) -> FileInfo:
         path = path or self.path
         info = FileInfo(name=path[8:], size=0)
 
