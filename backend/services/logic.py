@@ -1,3 +1,5 @@
+"""Stateless function helpers to support business logics
+"""
 from random import choice
 from string import digits
 
