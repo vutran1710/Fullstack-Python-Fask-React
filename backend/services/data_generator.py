@@ -1,3 +1,4 @@
+from typing import Union
 from string import ascii_lowercase, digits
 from random import choice, randrange, sample
 
@@ -19,8 +20,19 @@ class DataGenerator:
         return rand_int
 
     def random_alpha_numeric(self, length=10) -> str:
-        def _gen_(i: int):
+        def gen(i: int):
             return choice(digits if i % 2 == 0 else ascii_lowercase)
 
-        chars = list(map(_gen_, range(length)))
+        chars = list(map(gen, range(length)))
         return "".join(chars)
+
+    def generate_randoms(self, suffix=None) -> str:
+        """Generator to produce a random
+        stringified value from defined data-types
+        """
+        types = ["str", "real", "int", "alpha_numeric"]
+
+        while True:
+            method = "random_" + choice(types)
+            value = getattr(self, method)()
+            yield str(value) + (suffix or "")

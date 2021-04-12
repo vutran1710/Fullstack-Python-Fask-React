@@ -36,3 +36,10 @@ def test_alpha_numberic():
     random_an = dg.random_alpha_numeric()
     print(random_an)
     assert random_an.isalnum()
+
+
+def test_random_any():
+    gen = dg.generate_randoms(suffix=",")
+
+    for _ in range(10):
+        print(next(gen))
