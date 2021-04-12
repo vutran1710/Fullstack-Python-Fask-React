@@ -1,7 +1,16 @@
 from threading import Thread
 from flask import Flask, request
-from services.logic import make_file_path, convert_file_size
-from models import DataReport
+from services.logic import (
+    make_file_path,
+    convert_file_size,
+    get_file_name,
+    fix_file_name,
+)
+from models import (
+    DataReport,
+    GenDataAPIResponse,
+    DataReportAPIResponse,
+)
 from utils import get_dependencies
 
 app = Flask(__name__)
@@ -24,7 +33,7 @@ def generate_random_data():
 
     t = Thread(target=write_file_async, args=(path, data_stream, size))
     t.start()
-    return "OK"
+    return GenDataAPIResponse(path=path, size=size).json()
 
 
 @app.route("/data-report")
@@ -36,16 +45,19 @@ def get_file_report():
     - report data: dict
     """
     cache = get_dependencies("ch")
-    file_name = request.args.get("file")
-    if ".txt" not in file_name:
-        file_name += ".txt"
-    return cache.get_data(file_name, dict())
+    file_name = fix_file_name(request.args.get("file"))
+    result = cache.get_data(file_name, dict())
+
+    if result:
+        return DataReportAPIResponse(**result).json()
+
+    return None
 
 
 @app.route("/get-all")
 def get_all_data():
     """
-    debug cache
+    debugging cache
     """
     cache = get_dependencies("ch")
     return cache.get_all()
