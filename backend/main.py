@@ -7,21 +7,30 @@ app = Flask(__name__)
 
 
 @app.route("/gen-data")
-def generate_data_and_save_to_file():
-    dg, ch, fw = get_dependencies("dg", "ch", "fw")
+def generate_random_data():
+    """Generate random data and save to file
+    Return file-info data on success
+    """
+    datagen, cache, fwriter = get_dependencies("dg", "ch", "fw")
     path = make_file_path()
     report = DataReport()
-    data_stream = dg.generate_randoms(hook=report.update)
-    file_info = fw.write(path, data_stream)
-    ch.save_data(file_info.name, report.dict())
+    data_stream = datagen.generate_randoms(hook=report.update)
+    file_info = fwriter.write(path, data_stream)
+    cache.save_data(file_info.name, report.dict())
     return file_info.dict()
 
 
 @app.route("/data-report")
-def get_report_for_file():
-    ch = get_dependencies("ch")
+def get_file_report():
+    """Get statistic report for a specific file
+    API query-params:
+    - file: str
+    Returns:
+    - report data: dict
+    """
+    cache = get_dependencies("cache")
     file_name = request.args.get("file")
-    return ch.get_data(file_name, dict())
+    return cache.get_data(file_name, dict())
 
 
 if __name__ == "__main__":
