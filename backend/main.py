@@ -13,6 +13,7 @@ from models import (
 )
 from utils import get_dependencies
 
+
 app = Flask(__name__)
 
 
@@ -27,12 +28,12 @@ def generate_random_data():
     report = DataReport()
     data_stream = datagen.generate_randoms(hook=report.update)
 
-    def write_file_async(path, data_stream, max_size):
+    def write_file_async():
+        nonlocal fwriter, path, data_stream, size, report
         file_info = fwriter.write(path, data_stream, max_size=size)
         cache.save_data(file_info.name, report.dict())
 
-    t = Thread(target=write_file_async, args=(path, data_stream, size))
-    t.start()
+    Thread(target=write_file_async).start()
     return GenDataAPIResponse(path=path, size=size).json()
 
 
@@ -46,12 +47,8 @@ def get_file_report():
     """
     cache = get_dependencies("ch")
     file_name = fix_file_name(request.args.get("file"))
-    result = cache.get_data(file_name, dict())
-
-    if result:
-        return DataReportAPIResponse(**result).json()
-
-    return None
+    result = cache.get_data(file_name)
+    return DataReportAPIResponse(**result).json() if result else None
 
 
 @app.route("/get-all")
