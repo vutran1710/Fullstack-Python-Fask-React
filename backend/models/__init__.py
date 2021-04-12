@@ -11,3 +11,21 @@ class FileInfo(BaseModel):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.name = get_file_name(self.path)
+
+
+class DataReport(BaseModel):
+    strings: int = 0
+    reals: int = 0
+    integers: int = 0
+    alpha_numerics: int = 0
+
+    def update(self, _, data_type: str):
+        type_map = {
+            "str": "strings",
+            "real": "reals",
+            "int": "integers",
+            "alpha_numeric": "alpha_numerics",
+        }
+        attr = type_map[data_type]
+        current = getattr(self, attr)
+        setattr(self, attr, current + 1)
