@@ -30,3 +30,9 @@ def convert_file_size(size_str: str) -> int:
         return int(size_str)
     except Exception:
         return 0
+
+
+def fix_file_name(file_name: str) -> str:
+    if ".txt" not in file_name:
+        file_name += ".txt"
+    return file_name
