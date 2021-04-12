@@ -1,5 +1,5 @@
 from flask import Flask, request
-from services.logic import make_file_path
+from services.logic import make_file_path, convert_file_size
 from models import DataReport
 from utils import get_dependencies
 
@@ -11,11 +11,12 @@ def generate_random_data():
     """Generate random data and save to file
     Return file-info data on success
     """
+    size = convert_file_size(request.args.get("size"))
     datagen, cache, fwriter = get_dependencies("dg", "ch", "fw")
     path = make_file_path()
     report = DataReport()
     data_stream = datagen.generate_randoms(hook=report.update)
-    file_info = fwriter.write(path, data_stream)
+    file_info = fwriter.write(path, data_stream, max_size=size)
     cache.save_data(file_info.name, report.dict())
     return file_info.dict()
 
