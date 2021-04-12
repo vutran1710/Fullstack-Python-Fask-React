@@ -15,3 +15,6 @@ class Cache:
 
     def get_data(self, key: str, default=None):
         return self.__store__.get(key, default)
+
+    def get_all(self):
+        return self.__store__

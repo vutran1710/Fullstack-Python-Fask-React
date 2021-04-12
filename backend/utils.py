@@ -18,4 +18,4 @@ def get_dependencies(*services):
         g.dg = DataGenerator()
 
     svcs = [getattr(g, s) for s in services]
-    return svcs
+    return svcs if len(svcs) > 1 else svcs[0]
