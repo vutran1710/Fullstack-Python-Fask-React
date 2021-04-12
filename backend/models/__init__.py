@@ -29,3 +29,17 @@ class DataReport(BaseModel):
         attr = type_map[data_type]
         current = getattr(self, attr)
         setattr(self, attr, current + 1)
+
+
+class GenDataAPIResponse(BaseModel):
+    name: str
+    requested_size: int
+    status: str = "processing"
+
+    def __init__(self, /, path=None, size=None):
+        name = get_file_name(path)
+        super().__init__(name=name, requested_size=size)
+
+
+class DataReportAPIResponse(DataReport):
+    pass
