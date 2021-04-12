@@ -1,3 +1,4 @@
+from functools import reduce
 from services import DataGenerator
 
 dg = DataGenerator()
@@ -8,12 +9,8 @@ def test_random_string():
     print(random_str)
     assert len(random_str) == 10
 
-    for c in random_str:
-        try:
-            int(c)
-            raise Exception("Has number")
-        except:
-            pass
+    for char in random_str:
+        assert not char.isdigit()
 
     random_str = dg.random_str(length=20)
     print(random_str)
