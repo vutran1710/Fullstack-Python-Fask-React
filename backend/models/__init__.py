@@ -34,7 +34,7 @@ class DataReport(BaseModel):
 class GenDataAPIResponse(BaseModel):
     name: str
     requested_size: int
-    status: str = "processing"
+    status: str = "WAITING"
 
     def __init__(self, /, path=None, size=None):
         name = get_file_name(path)
@@ -43,3 +43,8 @@ class GenDataAPIResponse(BaseModel):
 
 class DataReportAPIResponse(DataReport):
     pass
+
+
+class StatusAPIResponse(BaseModel):
+    file: str
+    status: str
