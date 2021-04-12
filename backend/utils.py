@@ -1,3 +1,5 @@
+"""Flask-specific utilities / config
+"""
 from flask import g
 from services import Cache, FileWriter, DataGenerator
 
