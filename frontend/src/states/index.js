@@ -5,6 +5,7 @@ import { Http } from '../services'
 export const state = {
   fileInfo: {},
   dataReport: {},
+  latestFile: undefined,
   pendingFile: undefined,
   needCheckFile: undefined,
   checkingStatus: undefined,
@@ -27,7 +28,6 @@ export const actions = (set, get) => ({
 
   checkStatusIntervally: () => {
     const file = get().pendingFile
-
     set({ checkingStatus: file })
     const check = setInterval(() => {
       Http.checkFileStatus(file).json(resp => {
@@ -45,7 +45,7 @@ export const actions = (set, get) => ({
     Http.getDataReport(file).json(report => {
       if (Object.values(report).length) {
 	const dataReport = { ...reports, [file]: report }
-	set({ dataReport, pendingFile: undefined })
+	set({ dataReport, pendingFile: undefined, latestFile: file })
       }
     })
   },
