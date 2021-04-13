@@ -2,3 +2,5 @@ static/
 .pytest_cache/
 node_modules/
 tests/
+build/
+.env*

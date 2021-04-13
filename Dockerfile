@@ -1,5 +1,17 @@
+# build environment for webapp
+FROM node:14-alpine as build
+WORKDIR /app
+COPY ./frontend .
+RUN npm i
+RUN npm install node-sass
+RUN REACT_APP_SERVER_URL=http://localhost:3000 npm run build
+
+
+# production environment for whole server
 # pull official base image
 FROM python:3.8
+# copy frontend assets from build
+COPY --from=build /app/build /var/www
 
 # Setup webserver & webapp
 RUN apt update
