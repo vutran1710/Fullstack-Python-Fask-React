@@ -1,5 +1,6 @@
 """Stateless function helpers to support business logics
 """
+import re
 from os import environ
 from random import choice
 from string import digits
@@ -14,7 +15,8 @@ def make_file_path() -> str:
 
 
 def get_file_name(path: str) -> str:
-    return path[7:]
+    t = re.search("data-\d+\\.txt", path)
+    return t.group()
 
 
 def convert_file_size(size_str: str) -> int:
