@@ -1,18 +1,24 @@
-import logo from './logo.svg'
-import { DataLink } from './components'
+import { Header, DataLink, Reporter, Button } from './components'
+import { LimitedContainer } from './components/shares'
 import './App.css'
 
 const App = () => (
   <div className="App">
-    <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <p>
-	omnilytics
-      </p>
-    </header>
-    <div>
-      <DataLink />
-    </div>
+    <Header />
+    <LimitedContainer>
+      <div>
+	<Button title="Generate" />
+      </div>
+      <div>
+	<DataLink />
+      </div>
+      <div>
+	<Button title="Report" />
+      </div>
+      <div>
+	<Reporter />
+      </div>
+    </LimitedContainer>
   </div>
 )
 
