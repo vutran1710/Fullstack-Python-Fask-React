@@ -20,8 +20,8 @@ app = Flask(__name__)
 
 @app.route("/gen-data")
 def generate_random_data():
-    """Generate random data and save to file
-    Return file-info data on success
+    """Generate random data and write to file in the background
+    Return file info
     """
     size = convert_file_size(request.args.get("size"))
     datagen, cache, fwriter, status = get_dependencies("dg", "ch", "fw", "st")

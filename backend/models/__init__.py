@@ -4,9 +4,9 @@ from services.logic import get_file_name
 
 
 class FileInfo(BaseModel):
-    name: Optional[str]
     path: str
     size: int
+    name: Optional[str]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -32,13 +32,12 @@ class DataReport(BaseModel):
 
 
 class GenDataAPIResponse(BaseModel):
-    name: str
+    file: str
     requested_size: int
-    status: str = "WAITING"
 
     def __init__(self, /, path=None, size=None):
         name = get_file_name(path)
-        super().__init__(name=name, requested_size=size)
+        super().__init__(file=name, requested_size=size)
 
 
 class DataReportAPIResponse(DataReport):
