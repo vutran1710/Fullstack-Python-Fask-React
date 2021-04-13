@@ -18,6 +18,8 @@ def test_file_path_logic():
     environ["DATA_DIR"] = "/static/data/"
     verify_path()
 
+    del environ["DATA_DIR"]
+
 
 def test_size_convert():
     size = Logic.convert_file_size("1K")
