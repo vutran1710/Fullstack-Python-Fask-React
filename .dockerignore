@@ -1,0 +1,4 @@
+static/
+.pytest_cache/
+node_modules/
+tests/
