@@ -1,4 +1,5 @@
 import { Fragment } from 'react'
+import { Empty } from './Empty'
 
 
 export const List = ({ object, items, component: Component }) => {
@@ -18,7 +19,9 @@ export const List = ({ object, items, component: Component }) => {
     )
   }
 
-  if (Object.values(object).length) {
+  const shouldRenderObject = typeof object === 'object' && Object.values(object).length
+
+  if (shouldRenderObject) {
     return (
       <Fragment>
 	{Object.keys(object).map((dataKey, idx) => (
@@ -33,9 +36,5 @@ export const List = ({ object, items, component: Component }) => {
     )
   }
 
-  return (
-    <div>
-      Empty list...
-    </div>
-  )
+  return <Empty />
 }
