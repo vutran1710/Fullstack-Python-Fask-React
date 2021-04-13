@@ -1,6 +1,6 @@
 import { Header, DataLink, Reporter, Button } from './components'
 import { LimitedContainer } from './components/shares'
-import './App.css'
+import './styles/App.scss'
 
 const App = () => (
   <div className="App">
