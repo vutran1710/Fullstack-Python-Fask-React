@@ -27,6 +27,14 @@ body {
   cursor: pointer;
   transition: background .2s;
 
+  &:disabled, &[disabled] {
+    color: $semi-light;
+    background: $grey;
+    &:hover {
+      background: $grey;
+    }
+  }
+
   &:hover {
     background: $semi-dark;
   }
