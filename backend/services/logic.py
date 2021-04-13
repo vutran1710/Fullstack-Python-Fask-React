@@ -1,14 +1,15 @@
 """Stateless function helpers to support business logics
 """
+from os import environ
 from random import choice
 from string import digits
 
 
 def make_file_path() -> str:
-    prefix = "static/data-"
-    suffix = "".join([choice(digits) for _ in range(4)])
-    ext = ".txt"
-    path = prefix + suffix + ext
+    dir_path = environ.get("DATA_DIR", "static/")
+    hash = "".join([choice(digits) for _ in range(4)])
+    file_name = f"data-{hash}.txt"
+    path = dir_path + file_name
     return path
 
 
