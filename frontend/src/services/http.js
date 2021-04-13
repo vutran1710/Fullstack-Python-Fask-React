@@ -14,6 +14,6 @@ const abstractRequest = endpoint => (params={}) => Request
       .query(params)
       .get()
 
-export const generateData = abstractRequest(API.generateData)
+export const generateData = size => abstractRequest(API.generateData)({ size })
 export const checkFileStatus = file => abstractRequest(API.checkStatus)({ file })
 export const getDataReport = file => abstractRequest(API.dataReport)({ file })
