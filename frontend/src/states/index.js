@@ -20,7 +20,7 @@ export const actions = (set, get) => ({
       fileInfo: {
 	...get().fileInfo,
 	[resp.file]: {
-	  file: resp.file,
+	  name: resp.file,
 	  url: `${Http.serverUrl}/static-data/${resp.file}`
 	},
       }

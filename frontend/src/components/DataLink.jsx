@@ -2,15 +2,18 @@ import { IfElse} from './shares'
 
 
 const DownloadBox = ({ fileInfo }) => (
-  <div className="data-link--download">
-    <a download href={fileInfo.url}>
-      {fileInfo.name}
-    </a>
+  <div className="data-link__download">
+    <div>
+      <span>Download file:</span>
+      <span>
+	<a download href={fileInfo.url}>{fileInfo.name}</a>
+      </span>
+    </div>
   </div>
 )
 
 const EmptyBox = () => (
-  <div>
+  <div className="data-link__empty">
     No file available for download
   </div>
 )
