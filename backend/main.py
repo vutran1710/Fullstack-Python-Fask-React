@@ -27,7 +27,7 @@ def generate_random_data():
     datagen, cache, fwriter, status = get_dependencies("dg", "ch", "fw", "st")
     path = make_file_path()
     report = DataReport()
-    data_stream = datagen.generate_randoms(hook=report.update)
+    data_stream = datagen.generate_randoms(hook=report.update, suffix=", ")
 
     def write_file_async():
         nonlocal fwriter, path, data_stream, size, report, status
