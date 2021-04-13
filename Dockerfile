@@ -8,15 +8,15 @@ RUN apt install lighttpd -y
 # - copy lighttpd config to container
 COPY webserver/lighttpd.conf /etc/lighttpd
 
+# prepare dir for flask to write files to
+# must be the same as set in lighttpd.conf
+RUN cd /var && mkdir data && cd ..
+
 # set work directory
 WORKDIR /usr/src/flask
-# copy source
 COPY ./backend .
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
-# prepare dir for flask to write files to
-# must be the same as set in lighttpd.conf
-CMD cd /var && mkdir data
 ENV DATA_DIR=/var/data/
 
 # install dependencies
