@@ -1,7 +1,7 @@
 import wretch from 'wretch'
 
 export const serverUrl = process.env.REACT_APP_SERVER_URL
-const apiEndpoint = serverUrl + '/api'
+const apiEndpoint = process.env.REACT_APP_API_URL || `${serverUrl}/api`
 const Request = wretch(apiEndpoint)
 
 const API = {
