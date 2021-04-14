@@ -5,7 +5,7 @@ import { IfElse} from './shares'
 const DownloadBox = ({ fileInfo }) => (
   <div className="data-link__download">
     <div className="data-link-download__label">
-      File available
+      File available ({`${fileInfo.size} Mb`})
     </div>
     <div className="data-link-download__link">
       <a download href={fileInfo.url}>{fileInfo.name}</a>

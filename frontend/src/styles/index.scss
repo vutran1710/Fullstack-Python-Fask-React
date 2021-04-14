@@ -159,7 +159,7 @@ body {
 
 .data-link__download {
   @extend .row;
-  align-content: space-between;
+  align-items: flex-end;
   width: 100%;
 }
 

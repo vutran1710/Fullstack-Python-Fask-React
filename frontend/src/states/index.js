@@ -14,7 +14,7 @@ export const state = {
 
 export const actions = (set, get) => ({
   generateButtonClick: () => Http
-    .generateData(10000)
+    .generateData(2097152)
     .json(resp => set({
       pendingFile: resp.file,
       needCheckFile: resp.file,
@@ -22,6 +22,8 @@ export const actions = (set, get) => ({
 	...get().fileInfo,
 	[resp.file]: {
 	  name: resp.file,
+	  // NOTE: convert to MB
+	  size: (resp.requested_size / (1024 * 1024)).toFixed(3),
 	  url: `${Http.serverUrl}/static-data/${resp.file}`
 	},
       }

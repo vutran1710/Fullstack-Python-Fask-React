@@ -41,6 +41,7 @@ const App = () => {
 
   const disableDataLink = !fileInfo
 	|| needCheckFile === fileInfo.name
+	|| checkingStatus
 
   const statusValue = useAppStore(s => {
     if (!s.pendingFile) return undefined
