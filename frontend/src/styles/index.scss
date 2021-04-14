@@ -9,21 +9,70 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: $light;
-  font-size: 14pt;
+  font-size: 15pt;
 }
 
-.btn {
-  margin: 5px 10px;
+* {
+  box-sizing: border-box;
+}
+
+// Spacing
+.p1 {
+  padding: 10px;
+}
+
+.p2 {
+  padding: 25px;
+}
+
+.mb2 {
+  margin-bottom: 40px;
+}
+
+// Common
+.rounded {
+  border-radius: 8px;
+}
+
+.rounded2 {
+  border-radius: 26px;
+}
+
+.center {
+  text-align: center;
+  margin: 0 auto;
+}
+
+// Abstract components
+.limited-container {
+  @extend .p2, .rounded2;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.block {
+  @extend .p2, .rounded;
+  background: $extra-light;
+}
+
+.block.float {
+  box-shadow: 3px 4px 23px 0px rgba(0,0,0,0.07);
+}
+
+.block.fullHeight {
+  height: 100%;
 }
 
 .btn button {
+  @extend .rounded;
+  padding: 10px 15px;
   background: $dark;
+  font-size: 13pt;
   color: white;
   font-weight: 600;
   border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
-  min-width: 30px;
+  min-width: 100px;
   cursor: pointer;
   transition: background .2s;
 
@@ -41,8 +90,27 @@ body {
 }
 
 
+// Specific components
+.app-header {
+  @extend .p2, .mb2;
+}
+
+.app-header__welcome {
+  @extend .center;
+  font-weight: 900;
+  font-size: 15pt;
+  color: $semi-dark;
+  padding-bottom: 25px;
+  border-bottom: solid 1px $light;
+  width: 300px;
+}
+
+.control-box {
+  height: 600px;
+}
+
 .data-link {
+  @extend .p2;
   height: 30px;
   border: solid 1px $grey;
-  padding: 20px;
 }
