@@ -1,5 +1,11 @@
 # Demo flaskapp
 
+## Screenshot
+
+<p align="center">
+  <img src="docs/ss.png" height="200">
+</p>
+
 ## Running
 
 The most simple way is to run with docker, which has everything bundled and ready to use
