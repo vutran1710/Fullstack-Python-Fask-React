@@ -1,13 +1,14 @@
+import cx from 'classnames'
 import { IfElse} from './shares'
 
 
 const DownloadBox = ({ fileInfo }) => (
   <div className="data-link__download">
-    <div>
-      <span>Download file:</span>
-      <span>
-	<a download href={fileInfo.url}>{fileInfo.name}</a>
-      </span>
+    <div className="data-link-download__label">
+      File available
+    </div>
+    <div className="data-link-download__link">
+      <a download href={fileInfo.url}>{fileInfo.name}</a>
     </div>
   </div>
 )
@@ -18,11 +19,14 @@ const EmptyBox = () => (
   </div>
 )
 
-export const DataLink = ({ fileInfo }) => (
-  <div className="data-link">
-    <IfElse check={fileInfo && fileInfo.url}>
-      <DownloadBox fileInfo={fileInfo} />
-      <EmptyBox />
-    </IfElse>
-  </div>
-)
+export const DataLink = ({ fileInfo, disable }) => {
+  const cls = cx('data-link', { disable })
+  return (
+    <div className={cls}>
+      <IfElse check={!disable && fileInfo && fileInfo.url}>
+	<DownloadBox fileInfo={fileInfo} />
+	<EmptyBox />
+      </IfElse>
+    </div>
+  )
+}

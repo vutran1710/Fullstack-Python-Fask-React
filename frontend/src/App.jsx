@@ -4,8 +4,13 @@ import {
   DataLink,
   Reporter,
   Button,
+  Explain,
 } from './components'
-import { LimitedContainer, Block } from './components/shares'
+import {
+  LimitedContainer,
+  Block,
+  Row,
+} from './components/shares'
 import { useAppStore } from './states'
 
 
@@ -33,24 +38,35 @@ const App = () => {
   const report = useAppStore(s => s.dataReport[s.latestFile])
   const fileInfo = useAppStore(s => s.fileInfo[s.latestFile || s.pendingFile])
 
+  const disableDataLink = !fileInfo
+	|| needCheckFile === fileInfo.name
+
   return (
     <div className="App p2">
       <LimitedContainer className="control-box">
 	<Block float fullHeight>
 	  <Header />
-	  <div>
+	  <Row>
+	    <Explain
+	      text="Generate data"
+	      note="(int, real, string, alpha-numeric)"
+	    />
 	    <Button title="Generate" handler={generateButtonClick} />
-	  </div>
+	  </Row>
 	  <div>
-	    <DataLink fileInfo={fileInfo} />
+	    <DataLink fileInfo={fileInfo} disable={disableDataLink} />
 	  </div>
-	  <div>
+	  <Row>
+	    <Explain
+	      text="Get report for current file"
+	      note="(number of each objects)"
+	    />
 	    <Button
 	      title="Report"
 	      handler={getReportData}
 	      disabled={!canGetReport}
 	    />
-	  </div>
+	  </Row>
 	  <div>
 	    <Reporter data={report} />
 	  </div>
