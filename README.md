@@ -3,7 +3,7 @@
 ## Screenshot
 
 <p align="center">
-  <img src="docs/ss.png" height="200">
+  <img src="docs/ss.png" height="400">
 </p>
 
 ## Running
