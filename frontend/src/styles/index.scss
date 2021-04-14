@@ -67,6 +67,7 @@ body {
 .explain {
   padding-right: 15px;
   color: $semi-dark;
+  font-size: 12pt;
 }
 
 
@@ -119,7 +120,8 @@ body {
 
 // Specific components
 .app-header {
-  @extend .p2, .mb1;
+  @extend .mb1, .center;
+  padding-bottom: 30px;
 }
 
 .app-header__welcome {
@@ -129,7 +131,7 @@ body {
   color: $semi-dark;
   padding-bottom: 25px;
   border-bottom: solid 1px $light;
-  width: 300px;
+  width: 100%;
 }
 
 .control-box {
