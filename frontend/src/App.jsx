@@ -54,7 +54,10 @@ const App = () => {
 	    <Button title="Generate" handler={generateButtonClick} />
 	  </Row>
 	  <div>
-	    <DataLink fileInfo={fileInfo} disable={disableDataLink} />
+	    <DataLink
+	      fileInfo={fileInfo}
+	      disable={disableDataLink}
+	    />
 	  </div>
 	  <Row>
 	    <Explain

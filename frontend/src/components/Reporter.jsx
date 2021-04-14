@@ -3,10 +3,8 @@ import { List } from './shares'
 
 const ReportRow = ({ dataKey, dataValue }) => (
   <li className="report-row">
-    <div>
-      <span>{dataKey}</span>
-      <span>{dataValue}</span>
-    </div>
+    <div className="report-row--key">{dataKey}</div>
+    <div className="report-row--value">{dataValue}</div>
   </li>
 )
 

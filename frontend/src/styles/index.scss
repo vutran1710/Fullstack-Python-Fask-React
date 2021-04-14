@@ -49,7 +49,7 @@ body {
 }
 
 .rounded2 {
-  border-radius: 10px;
+  border-radius: 30px;
 }
 
 .center {
@@ -66,7 +66,6 @@ body {
 
 .explain {
   padding-right: 15px;
-  font-size: 13pt;
   color: $semi-dark;
 }
 
@@ -95,7 +94,6 @@ body {
   @extend .rounded;
   padding: 10px 10px;
   background: $dark;
-  font-size: 12pt;
   color: white;
   font-weight: 600;
   border: none;
@@ -104,10 +102,12 @@ body {
   transition: background .2s;
 
   &:disabled, &[disabled] {
-    color: $semi-light;
-    background: $grey;
+    color: #cccccc;
+    background: #eaeaea;
+    cursor: not-allowed;
+
     &:hover {
-      background: $grey;
+      background: #eaeaea;
     }
   }
 
@@ -133,25 +133,24 @@ body {
 }
 
 .control-box {
-  height: 600px;
+  height: 700px;
 }
 
 .data-link {
-  @extend .rounded, .mv1, .row;
+  @extend .rounded2, .mv1, .row;
   height: 100%;
   margin-bottom: 40px;
   padding: 15px;
-  background: $blue;
   transition: background .2s;
+  color: $grey;
 }
 
 .data-link.disable {
-  background: $light;
 }
 
 .data-link__empty {
   @extend .center;
-  color: $extra-light;
+  color: $dark-light;
   font-style: italic;
 }
 
@@ -166,4 +165,27 @@ body {
 }
 
 .data-link-download__link {
+}
+
+.reporter {
+  @extend .mv1, .rounded;
+  height: 200px;
+  color: $grey;
+}
+
+.reporter ul {
+  padding: 15px;
+  list-style-type: none;
+  margin: 0;
+}
+
+.report-row {
+  @extend .row;
+  margin-bottom: 10px;
+}
+
+.report-row--value {
+}
+
+.report-row--key {
 }
