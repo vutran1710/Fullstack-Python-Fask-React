@@ -19,3 +19,12 @@ export const Block = ({ float, fullHeight, children }) => {
     </div>
   )
 }
+
+
+export const Row = ({ children }) => {
+  return (
+    <div className="row">
+      {children}
+    </div>
+  )
+}
