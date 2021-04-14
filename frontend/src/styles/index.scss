@@ -9,7 +9,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: $light;
-  font-size: 15pt;
+  font-size: 14pt;
 }
 
 * {
@@ -17,25 +17,39 @@ body {
 }
 
 // Spacing
-.p1 {
-  padding: 10px;
+.mv1 {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-.p2 {
-  padding: 25px;
+.mh1 {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.mb1 {
+  margin-bottom: 20px;
 }
 
 .mb2 {
   margin-bottom: 40px;
 }
 
+.p1 {
+  padding: 10px;
+}
+
+.p2 {
+  padding: 30px;
+}
+
 // Common
 .rounded {
-  border-radius: 8px;
+  border-radius: 5px;
 }
 
 .rounded2 {
-  border-radius: 26px;
+  border-radius: 10px;
 }
 
 .center {
@@ -44,6 +58,19 @@ body {
 }
 
 // Abstract components
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.explain {
+  padding-right: 15px;
+  font-size: 13pt;
+  color: $semi-dark;
+}
+
+
 .limited-container {
   @extend .p2, .rounded2;
   width: 100%;
@@ -66,9 +93,9 @@ body {
 
 .btn button {
   @extend .rounded;
-  padding: 10px 15px;
+  padding: 10px 10px;
   background: $dark;
-  font-size: 13pt;
+  font-size: 12pt;
   color: white;
   font-weight: 600;
   border: none;
@@ -92,7 +119,7 @@ body {
 
 // Specific components
 .app-header {
-  @extend .p2, .mb2;
+  @extend .p2, .mb1;
 }
 
 .app-header__welcome {
@@ -110,7 +137,33 @@ body {
 }
 
 .data-link {
-  @extend .p2;
-  height: 30px;
-  border: solid 1px $grey;
+  @extend .rounded, .mv1, .row;
+  height: 100%;
+  margin-bottom: 40px;
+  padding: 15px;
+  background: $blue;
+  transition: background .2s;
+}
+
+.data-link.disable {
+  background: $light;
+}
+
+.data-link__empty {
+  @extend .center;
+  color: $extra-light;
+  font-style: italic;
+}
+
+.data-link__download {
+  @extend .row;
+  align-content: space-between;
+  width: 100%;
+}
+
+.data-link-download__label {
+  margin-right: 30px;
+}
+
+.data-link-download__link {
 }
