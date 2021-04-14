@@ -5,6 +5,7 @@ import {
   Reporter,
   Button,
   Explain,
+  Status,
 } from './components'
 import {
   LimitedContainer,
@@ -41,6 +42,12 @@ const App = () => {
   const disableDataLink = !fileInfo
 	|| needCheckFile === fileInfo.name
 
+  const statusValue = useAppStore(s => {
+    if (!pendingFile) return undefined
+    if (s.checkingStatus) return 'WAIT'
+    return 'FINISH'
+  })
+
   return (
     <div className="App p2">
       <LimitedContainer className="control-box">
@@ -73,6 +80,7 @@ const App = () => {
 	  <div>
 	    <Reporter data={report} />
 	  </div>
+	  <Status status={statusValue} />
 	</Block>
       </LimitedContainer>
     </div>

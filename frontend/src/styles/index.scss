@@ -45,7 +45,7 @@ body {
 
 // Common
 .rounded {
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .rounded2 {
@@ -134,6 +134,7 @@ body {
 
 .control-box {
   height: 700px;
+  position: relative;
 }
 
 .data-link {
@@ -188,4 +189,32 @@ body {
 }
 
 .report-row--key {
+}
+
+.status {
+  @extend .center;
+  background: $dark-light;
+  position: absolute;
+  padding: 5px;
+  bottom: 20px;
+  width: 440px;
+  left: 30px;
+  border-radius: 0 0 16px 16px;
+  font-size: 11pt;
+  font-weight: 900;
+  color: $semi-light;
+
+  > div {
+    padding: 5px;
+  }
+}
+
+.status.checking {
+  background: $red;
+  color: $extra-light;
+}
+
+.status.finish {
+  background: $green;
+  color: $extra-light;
 }
