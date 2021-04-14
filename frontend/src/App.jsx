@@ -36,14 +36,14 @@ const App = () => {
 
   const canGetReport = pendingFile && !needCheckFile
 
-  const report = useAppStore(s => s.dataReport[s.latestFile])
-  const fileInfo = useAppStore(s => s.fileInfo[s.latestFile || s.pendingFile])
+  const report = useAppStore(s => s.dataReport[s.activeFile])
+  const fileInfo = useAppStore(s => s.fileInfo[s.activeFile || s.pendingFile])
 
   const disableDataLink = !fileInfo
 	|| needCheckFile === fileInfo.name
 
   const statusValue = useAppStore(s => {
-    if (!pendingFile) return undefined
+    if (!s.pendingFile) return undefined
     if (s.checkingStatus) return 'WAIT'
     return 'FINISH'
   })

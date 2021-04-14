@@ -3,9 +3,10 @@ import { Http } from '../services'
 
 
 export const state = {
+  files: [],
   fileInfo: {},
   dataReport: {},
-  latestFile: undefined,
+  activeFile: undefined,
   pendingFile: undefined,
   needCheckFile: undefined,
   checkingStatus: undefined,
@@ -41,12 +42,17 @@ export const actions = (set, get) => ({
 
   getReportData: () => {
     const file = get().pendingFile
+    const files = get().files
     const reports = get().dataReport
     Http.getDataReport(file).json(report => {
-      if (Object.values(report).length) {
-	const dataReport = { ...reports, [file]: report }
-	set({ dataReport, pendingFile: undefined, latestFile: file })
-      }
+      if (!Object.values(report).length) return undefined
+      const dataReport = { ...reports, [file]: report }
+      set({
+	dataReport,
+	pendingFile: undefined,
+	activeFile: file,
+	files: [...files, file],
+      })
     })
   },
 })
