@@ -1,4 +1,8 @@
-# Demo flaskapp
+# A simple fullstack app built with Python-Flask & React
+
+## Challenge
+
+Build a simple server-side app with **Flask** that generate random values of `String, Integer, Float and Alphanumeric` and save it to a file with maxium size of 2MB. Allow to download such file from a web client written in **React**. Calculate how many values of each type generated from such file.
 
 ## Screenshot
 
